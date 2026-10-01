@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router";
+import { Routes, Route, NavLink } from "react-router";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -7,8 +7,8 @@ function App() {
   return (
     <>
       <nav>
-        <Link to="/">Inicio</Link>
-        <Link to="/acerca">Acerca de</Link>
+        <NavLink to="/">Inicio</NavLink>
+        <NavLink to="/acerca">Acerca de</NavLink>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />

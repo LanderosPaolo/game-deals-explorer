@@ -1,44 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SearchForm from "../components/SearchForm";
 import DealList from "../components/DealList";
+import useOfertas from "../hooks/useOfertas";
 
 function Home() {
-  const [ofertas, setOfertas] = useState([]);
-  const [cargando, setCargando] = useState(true);
-  const [error, setError] = useState("");
   const [terminoBusqueda, setTerminoBusqueda] = useState("");
-
-  useEffect(() => {
-    const obtenerOfertas = async () => {
-      setCargando(true);
-      setError("");
-
-      try {
-        const urlBase =
-          "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15";
-
-        const url = terminoBusqueda
-          ? `${urlBase}&title=${encodeURIComponent(terminoBusqueda)}`
-          : urlBase;
-
-        const response = await fetch(url);
-
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        setOfertas(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setCargando(false);
-      }
-    };
-
-    obtenerOfertas();
-  }, [terminoBusqueda]);
+  const { ofertas, cargando, error } = useOfertas(terminoBusqueda)
 
   const buscarOfertas = (titulo) => {
     setTerminoBusqueda(titulo);
