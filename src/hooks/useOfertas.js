@@ -6,6 +6,7 @@ function useOfertas(terminoBusqueda) {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    let ignorar = false;
     const obtenerOfertas = async () => {
       setCargando(true);
       setError("");
@@ -26,15 +27,25 @@ function useOfertas(terminoBusqueda) {
 
         const data = await response.json();
 
-        setOfertas(data);
+        if (!ignorar) {
+          setOfertas(data);
+        }
       } catch (err) {
-        setError(err.message);
+        if (!ignorar) {
+          setError(err.message);
+        }
       } finally {
-        setCargando(false);
+        if (!ignorar) {
+          setCargando(false);
+        }
       }
     };
 
     obtenerOfertas();
+
+    return () => {
+      ignorar = true;
+    };
   }, [terminoBusqueda]);
 
   return { ofertas, cargando, error };
