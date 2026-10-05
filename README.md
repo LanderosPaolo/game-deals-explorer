@@ -82,46 +82,6 @@ src/
 | `/acerca` | Información sobre el proyecto |
 | `*` | Página para rutas inexistentes |
 
-## 🚀 Ejecución local
-
-### 1. Clonar el repositorio
-
-```bash
-git clone URL_DEL_REPOSITORIO
-```
-
-### 2. Entrar en la carpeta
-
-```bash
-cd game-deals-explorer
-```
-
-### 3. Instalar dependencias
-
-```bash
-npm install
-```
-
-### 4. Iniciar el servidor de desarrollo
-
-```bash
-npm run dev
-```
-
-## ✅ Verificación
-
-Ejecutar ESLint:
-
-```bash
-npm run lint
-```
-
-Generar la versión de producción:
-
-```bash
-npm run build
-```
-
 ## 🔌 API
 
 La aplicación utiliza el endpoint de ofertas de CheapShark:
