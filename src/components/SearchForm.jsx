@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function SearchForm({ buscarOfertas }) {
-  const [busqueda, setBusqueda] = useState("");
+function SearchForm({ buscarOfertas, terminoBusqueda }) {
+  const [busqueda, setBusqueda] = useState(terminoBusqueda);
   const [error, setError] = useState("");
 
   const manejarSubmit = (e) => {

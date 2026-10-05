@@ -1,20 +1,14 @@
-import { useState } from "react";
 import SearchForm from "../components/SearchForm";
 import DealList from "../components/DealList";
 import useOfertas from "../hooks/useOfertas";
 
-function Home() {
-  const [terminoBusqueda, setTerminoBusqueda] = useState("");
+function Home({ terminoBusqueda, buscarOfertas }) {
   const { ofertas, cargando, error } = useOfertas(terminoBusqueda)
-
-  const buscarOfertas = (titulo) => {
-    setTerminoBusqueda(titulo);
-  };
 
   return (
     <>
       <h1>Game Deals Explorer</h1>
-      <SearchForm buscarOfertas={buscarOfertas} />
+      <SearchForm buscarOfertas={buscarOfertas} terminoBusqueda={terminoBusqueda} />
       <p>Búsqueda solicitada: {terminoBusqueda}</p>
 
       {cargando ? (

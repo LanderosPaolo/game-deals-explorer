@@ -1,5 +1,6 @@
 function DealCard({ oferta }) {
-  const descuento = 100 - (oferta.salePrice * 100) / oferta.normalPrice;
+
+  const descuento = Number(oferta.normalPrice) > 0 ? (100 - (oferta.salePrice * 100) / oferta.normalPrice) : 0;
 
   return (
     <li>
